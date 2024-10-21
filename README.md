@@ -8,3 +8,4 @@ This is meant as a sort of alternatively-structured example of avoiding code dup
 Uploaded here since we didn't add contributors to the initial git-repo @ https://github.com/JeppeMarek/GameJam
 
 <h2>Screenshots</h2>
+<img src="_Screenshots/GJE Console Simple, Fast-Death Example.png">

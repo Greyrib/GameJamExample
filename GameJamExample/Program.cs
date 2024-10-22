@@ -33,8 +33,8 @@ namespace GameJamExample
             {
                 // Reference Event Constructor Params : eventOriginText, optionTextStringList, optionNextEventIdStringList, eventIdString
 
-                new Event ("Vågner i sin seng  klokken er 06:45", 
-                    new List<string>{"1. Snooze i 5 min.", "2. Sov igennem alarmen", "3. Stå op med det samme"},
+                new Event ("Den pinende alarm så vækkede dig larmer stadig. Hvad vil du gøre herfra?", 
+                    new List<string>{"1. Snooze i 5 min.", "2. Sov igennem alarmen ved hjælp af viljestyrke.", "3. Stå op med det samme."},
                     new List<string>(){"SnoozeDie", "SnowWhite", "Shower" },
                     "WakeUp")
                 ,
@@ -47,7 +47,7 @@ namespace GameJamExample
                 ,
                 // NOTE Special case here, this event's choice affects future outcome in BoulderingHall
                 new Event ("Tid til morgenmad. Nom nom.",
-                new List<string>{"1. Drikker monner", "2. Drik en flaske vand", "3. Spis müsli" },
+                new List<string>{"1. Drik en lille monne 160 mg koffein", "2. Drik en flaske vand", "3. Spis müsli" },
                 new List<string>{ "Transport", "Transport", "Transport"},
                 "Brekfus")
                 ,
@@ -132,7 +132,7 @@ namespace GameJamExample
                               "\r\n\\/   |_|  \\___|\\__,_|\\__,_|\\__, | |_|  \\___/|_|     \\___| \\_/ |_|\\__, |\\__|" +
                               "\r\n                           |___/                                 |___/     " +
                               "\r\n");
-            Console.WriteLine("\nDu vågner op fredag morgen, solen skinner ind af vinduet." +
+            Console.WriteLine("\nDu vågner op fredag morgen kl. 06:45, og solen skinner ind af vinduet." +
                 "\nDet en dag som enhver anden, men der er noget der føles bekendt. " +
                 "\nHmmm. Der er ingen grund til bekymring. Der er en travl dag foran dig" +
                 "\nog du skal endda ud og klatre og drikke i byen med Orhan!\n");

@@ -14,7 +14,7 @@ namespace GameJamExample
 
         static int brekfus = -1;
 
-        static Thread musicThread;
+        static Thread musicThread; // Thread so music can run simultaneously with gameplay loop
 
         static void Main (string[] args)
         {

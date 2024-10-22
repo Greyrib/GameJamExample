@@ -72,13 +72,13 @@ namespace GameJamExample
                 new List<string>{},
                 "Bouldering")
                 ,
-                new Event ("Tager i byen",
-                new List<string> {"Man tager på Den brølende and", "Man tager på a-bar", "Man tager på old irish", "Man tager på Proud"},
+                new Event ("Du skal til at tage i byen nu. Hvor tager du hen?",
+                new List<string> {"1. Man tager på Den brølende and", "2. Man tager på a-bar", "3. Man tager på old irish", "4. Man tager på Proud"},
                 new List<string> {"Chica", "AbarDie", "OldIrishDie", "ProudDie"},
                 "CityTrip")
                 ,
                 new Event ("Dame med hjem fra byen kl. 05:00 ?",
-                new List<string>{ "Ja!", "Nej!"},
+                new List<string>{ "1. Ja!", "2. Nej!"},
                 new List<string>{ "Ladykiller", "CHICKEN"},
                 "Chica")
             };

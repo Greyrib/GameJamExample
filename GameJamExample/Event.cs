@@ -18,16 +18,21 @@ namespace GameJamExample
 
         public string TextColoring;
 
+        public string preEventText;
+
         public void PreEventStuff ()
         {
             if (TextColoring == "White")
                 Console.ForegroundColor = ConsoleColor.White;
             else if (TextColoring == "Green")
                 Console.ForegroundColor = ConsoleColor.Green;
+
+            if (preEventText != "")
+                Console.WriteLine(preEventText);
         }
 
         // NOTE Last parameters with 'paramName = value' are optional parameters ; they must be last in param-list
-        public Event (string newOrigin, List<string> newOptions, List<string> newNextEvents, string newId = "-1", EventSpecialCondition newSpecial = EventSpecialCondition.None, string foreground = "White")
+        public Event (string newOrigin, List<string> newOptions, List<string> newNextEvents, string newId = "-1", EventSpecialCondition newSpecial = EventSpecialCondition.None, string foreground = "White", string newPretext = "")
         {
             //if (newNextEvents.Count != newOptions.Count)
             //    Console.Write("ERROR Array lengths don't match");
@@ -41,6 +46,8 @@ namespace GameJamExample
             evSpCon = newSpecial;
 
             TextColoring = foreground;
+
+            preEventText = newPretext;
         }
     }
 }

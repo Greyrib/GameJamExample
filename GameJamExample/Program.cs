@@ -125,9 +125,10 @@ namespace GameJamExample
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
             // Game Intro Text
-            Console.WriteLine("Du vågner op fredag morgen, solen skinner ind af vinduet." +
-                "\nDet en dag som enhver anden, men der er noget, der føles bekendt. " +
-                "\nHmmm. Der er ingen grund til bekymring, der er en travl dag foran dig" +
+            Console.WriteLine("\r\n   ___             _                __                         _       _   \r\n  / __\\ __ ___  __| | __ _  __ _   / _| ___  _ __    _____   _(_) __ _| |_ \r\n / _\\| '__/ _ \\/ _` |/ _` |/ _` | | |_ / _ \\| '__|  / _ \\ \\ / / |/ _` | __|\r\n/ /  | | |  __/ (_| | (_| | (_| | |  _| (_) | |    |  __/\\ V /| | (_| | |_ \r\n\\/   |_|  \\___|\\__,_|\\__,_|\\__, | |_|  \\___/|_|     \\___| \\_/ |_|\\__, |\\__|\r\n                           |___/                                 |___/     \r\n");
+            Console.WriteLine("\nDu vågner op fredag morgen, solen skinner ind af vinduet." +
+                "\nDet en dag som enhver anden, men der er noget der føles bekendt. " +
+                "\nHmmm. Der er ingen grund til bekymring. Der er en travl dag foran dig" +
                 "\nog du skal endda ud og klatre og drikke i byen med Orhan!\n");
 
             // TODO Could extend here with ...
@@ -156,13 +157,13 @@ namespace GameJamExample
                     {
                         if (brekfus == 0)
                         {
-                            Console.WriteLine("Du har energi fra monneren du drak til morgenmad. Du flyver op af ruter i alle sværhedsgrader, Orhan indser at han aldrig bliver lige så god til bouldering som dig.");
+                            Console.WriteLine("Du har energi fra monneren du drak til morgenmad. Du flyver op af ruter i alle sværhedsgrader, og Orhan indser at han aldrig bliver lige så god til bouldering som dig.");
                         } else if (brekfus == 1)
                         {
-                            Console.WriteLine("Du prøver at klatre op af den nemmeste rute, men vand er for svage mennesker og giver ingen energi. Du falder ned fra væggen og lander lige akkurat udenfor madrassen under dig og du dør.");
+                            Console.WriteLine("Du prøver at klatre op af den nemmeste rute, men vand er for svagelige mennesker og giver ingen energi. Du falder ned fra væggen og lander lige akkurat udenfor madrassen under dig og dør.");
                         } else if (brekfus == 2)
                         {
-                            Console.WriteLine("Dagen går relativt okay og du klatre som du normalt ville.\r\nSiden du spiste müsli til morgenmad føler du dig fyldt af energi, du går efter en sværere rute end normalt. Halvvejs oppe løber müsliens energi tør. Du falder og forstrækker en muskel, dette er lig med død for en svag IT studerende.");
+                            Console.WriteLine("Dagen går relativt okay og du klatrer som du normalt ville.\r\nSiden du spiste müsli til morgenmad føler du dig fyldt af energi, og du går efter en sværere rute end normalt. Halvvejs oppe løber müsliens energi tør. Du falder og forstrækker en muskel, som er lig med død for en svag IT studerende.");
                         }
                         curEvent = events.FirstOrDefault(x => x.eventId == "CityTrip");
                     }
@@ -236,7 +237,7 @@ namespace GameJamExample
         static void Play_Music()
         {
             // Load the WAV file
-            WaveFileReader waveFileReader = new WaveFileReader(@"C:\Archive S\UCL\3. Semester\Git\GameJam med Förste Semester\GameJamExample\GameJamExample\piano loop.wav");
+            WaveFileReader waveFileReader = new WaveFileReader("piano loop.wav");
             // Create a WaveOutEvent instance
             WaveOutEvent waveOutEvent = new WaveOutEvent();
 

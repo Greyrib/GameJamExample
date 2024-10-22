@@ -11,8 +11,10 @@ namespace GameJamExample
 
         static bool dontloop = false; // To break out the repeating while-loop in 'Loop()'
 
+
         static void Main (string[] args)
         {
+            
             Game_Intro();
             
             // Set regular events

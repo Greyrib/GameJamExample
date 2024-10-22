@@ -61,7 +61,7 @@ namespace GameJamExample
                 new List<string>{ "SysDie", "ProDie", "Bouldering"},
                 "Skolevalg")
                 ,
-                new Event("Du skal til lidt eftermiddagsbouldering i bouldering hallen. Hvordan kommer du derhen?",
+                new Event("Du skal til lidt eftermiddagsbouldering i bouldering hallen.",
                 new List<string>{ "Rute 1: under broen", "Rute 2: igennem gyden"},
                 new List<string>{ "", "BridgeDie"},
                 "Bouldering")

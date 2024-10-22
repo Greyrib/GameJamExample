@@ -34,35 +34,35 @@ namespace GameJamExample
                 // Reference Event Constructor Params : eventOriginText, optionTextStringList, optionNextEventIdStringList, eventIdString
 
                 new Event ("Vågner i sin seng  klokken er 06:45", 
-                    new List<string>{"1. Snooze i 5 min.", "2. Sov igennem alarmen", "Staa op med det samme"},
+                    new List<string>{"1. Snooze i 5 min.", "2. Sov igennem alarmen", "3. Stå op med det samme"},
                     new List<string>(){"SnoozeDie", "SnowWhite", "Shower" },
                     "WakeUp")
                 ,
-                new Event ("I bad",
-                new List<string>{ "Gå i bad og brug shampoo og shower gel.",
-                    "Gå i bad og brug håndsæbe til hele kroppen.",
-                    "Spring badet over."},
+                new Event ("Du skal beslutte dig for om du vil i bad eller ej. Hvad vil du gøre?",
+                new List<string>{ "1. Gå i bad og brug shampoo og shower gel.",
+                    "2. Gå i bad og brug håndsæbe til hele kroppen.",
+                    "3. Spring badet over."},
                 new List<string>{ "ShampooDie", "Brekfus" /*"SoapDie"*/, "NoShower" },
                 "Shower")
                 ,
                 // NOTE Special case here, this event's choice affects future outcome in BoulderingHall
-                new Event ("Morgenmad. Nom nom.",
-                new List<string>{"Drikker monner", "Drik en flaske vand", "Spis müsli" },
+                new Event ("Tid til morgenmad. Nom nom.",
+                new List<string>{"1. Drikker monner", "2. Drik en flaske vand", "3. Spis müsli" },
                 new List<string>{ "Transport", "Transport", "Transport"},
                 "Brekfus")
                 ,
-                new Event ("Transport til skole.",
-                new List<string>{ "Gaa i skole.", "Cykle i skole", "Offentlig transport" },
+                new Event ("Du skal over på campus nu. Hvordan?",
+                new List<string>{ "1. Gå i skole.", "2. Cykel i skole", "3. Offentlig transport" },
                 new List<string> { "RunOver", "Skolevalg", "PublicTranspDie"}, 
                 "Transport")
                 ,
-                new Event ("Skolevalg",
-                new List<string>{ "Systemudvikling", "Programmering", "Spille slope på y8"},
+                new Event ("Hvad vil du lave i skolen?",
+                new List<string>{ "1. Systemudvikling", "2. Programmering", "3. Spille Slope på Y8"},
                 new List<string>{ "SysDie", "ProDie", "Bouldering"},
                 "Skolevalg")
                 ,
-                new Event("Gå til bouldering hallen",
-                new List<string>{ "Rute 1 under broen", "rute 2 igennem gyden"},
+                new Event("Du skal til lidt eftermiddagsbouldering i bouldering hallen. Hvordan kommer du derhen?",
+                new List<string>{ "Rute 1: under broen", "Rute 2: igennem gyden"},
                 new List<string>{ "", "BridgeDie"},
                 "Bouldering")
                 ,
@@ -125,7 +125,13 @@ namespace GameJamExample
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
             // Game Intro Text
-            Console.WriteLine("\r\n   ___             _                __                         _       _   \r\n  / __\\ __ ___  __| | __ _  __ _   / _| ___  _ __    _____   _(_) __ _| |_ \r\n / _\\| '__/ _ \\/ _` |/ _` |/ _` | | |_ / _ \\| '__|  / _ \\ \\ / / |/ _` | __|\r\n/ /  | | |  __/ (_| | (_| | (_| | |  _| (_) | |    |  __/\\ V /| | (_| | |_ \r\n\\/   |_|  \\___|\\__,_|\\__,_|\\__, | |_|  \\___/|_|     \\___| \\_/ |_|\\__, |\\__|\r\n                           |___/                                 |___/     \r\n");
+            Console.WriteLine("\r\n   ___             _                __                         _       _   " +
+                              "\r\n  / __\\ __ ___  __| | __ _  __ _   / _| ___  _ __    _____   _(_) __ _| |_ " +
+                              "\r\n / _\\| '__/ _ \\/ _` |/ _` |/ _` | | |_ / _ \\| '__|  / _ \\ \\ / / |/ _` | __|" +
+                              "\r\n/ /  | | |  __/ (_| | (_| | (_| | |  _| (_) | |    |  __/\\ V /| | (_| | |_ " +
+                              "\r\n\\/   |_|  \\___|\\__,_|\\__,_|\\__, | |_|  \\___/|_|     \\___| \\_/ |_|\\__, |\\__|" +
+                              "\r\n                           |___/                                 |___/     " +
+                              "\r\n");
             Console.WriteLine("\nDu vågner op fredag morgen, solen skinner ind af vinduet." +
                 "\nDet en dag som enhver anden, men der er noget der føles bekendt. " +
                 "\nHmmm. Der er ingen grund til bekymring. Der er en travl dag foran dig" +

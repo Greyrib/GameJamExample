@@ -36,36 +36,36 @@ namespace GameJamExample
             {
                 // Reference Event Constructor Params : eventOriginText, optionTextStringList, optionNextEventIdStringList, eventIdString
 
-                new Event ("Vågner i sin seng  klokken er 06:45", 
-                    new List<string>{"Snooze i 5 min.", "Sov igennem alarmen", "Staa op med det samme"},
+                new Event ("Den pinende alarm så vækkede dig larmer stadig. Hvad vil du gøre herfra?", 
+                    new List<string>{"1. Snooze i 5 min.", "2. Sov igennem alarmen ved hjælp af viljestyrke.", "3. Stå op med det samme."},
                     new List<string>(){"SnoozeDie", "SnowWhite", "Shower" },
                     "WakeUp")
                 ,
-                new Event ("I bad",
-                new List<string>{ "Gå i bad og brug shampoo og shower gel.",
-                    "Gå i bad og brug håndsæbe til hele kroppen.",
-                    "Spring badet over."},
+                new Event ("Du skal beslutte dig for om du vil i bad eller ej. Hvad vil du gøre?",
+                new List<string>{ "1. Gå i bad og brug shampoo og shower gel.",
+                    "2. Gå i bad og brug håndsæbe til hele kroppen.",
+                    "3. Spring badet over."},
                 new List<string>{ "ShampooDie", "Brekfus" /*"SoapDie"*/, "NoShower" },
                 "Shower", newPretext: "Du lever, du er frisk og klar til dagen")
                 ,
                 // NOTE Special case here, this event's choice affects future outcome in BoulderingHall
-                new Event ("Morgenmad. Nom nom.",
-                new List<string>{"Drikker monner", "Drik en flaske vand", "Spis müsli" },
+                new Event ("Tid til morgenmad. Nom nom.",
+                new List<string>{"1. Drik en lille monne 160 mg koffein", "2. Drik en flaske vand", "3. Spis müsli" },
                 new List<string>{ "Transport", "Transport", "Transport"},
                 "Brekfus")
                 ,
-                new Event ("Transport til skole.",
-                new List<string>{ "Gaa i skole.", "Cykle i skole", "Offentlig transport" },
+                new Event ("Du skal over på campus nu. Hvordan?",
+                new List<string>{ "1. Gå i skole.", "2. Cykel i skole", "3. Offentlig transport" },
                 new List<string> { "RunOver", "Skolevalg", "PublicTranspDie"}, 
                 "Transport")
                 ,
-                new Event ("Skolevalg",
-                new List<string>{ "Systemudvikling", "Programmering", "Spille slope på y8"},
+                new Event ("Hvad vil du lave i skolen?",
+                new List<string>{ "1. Systemudvikling", "2. Programmering", "3. Spille Slope på Y8"},
                 new List<string>{ "SysDie", "ProDie", "Bouldering"},
                 "Skolevalg")
                 ,
-                new Event("Gå til bouldering hallen",
-                new List<string>{ "Rute 1 under broen", "rute 2 igennem gyden"},
+                new Event("Du skal til lidt eftermiddagsbouldering i bouldering hallen.",
+                new List<string>{ "Rute 1: under broen", "Rute 2: igennem gyden"},
                 new List<string>{ "", "BridgeDie"},
                 "Bouldering")
                 ,
@@ -90,31 +90,31 @@ namespace GameJamExample
             // NOTE Disregard that VS states they aren't used; they're sought & triggered when an event points to a followup-event
             events.Add (new Event ("Du glider i shampoo-flasken, slaar hovedet og blöder ud!", new List<string> (), new List<string> (), "ShampooDie", newSpecial: EventSpecialCondition.Death));
             //events.Add (new Event ("Du lever en bar af håndsæbe er den bedste sæbe til krop og sjæl", new List<string> (), new List<string> (), "SoapDie"));
-            events.Add (new Event ("Din nabo snakker højt om at du lugter hele vejen ind i hans lejlighed, du dør af skam.", new List<string> (), new List<string> (), "NoShower", newSpecial: EventSpecialCondition.Death));
+            events.Add (new Event ("Din nabo snakker højt om at du lugter hele vejen ind i hans lejlighed. Du dør af skam.", new List<string> (), new List<string> (), "NoShower", newSpecial: EventSpecialCondition.Death));
 
-            events.Add (new Event ("Du faar en blodprop og er dieded!", new List<string> (), new List<string> (), "SnoozeDie", newSpecial: EventSpecialCondition.Death));
+            events.Add (new Event ("Du får en blodprop og er dieded!", new List<string> (), new List<string> (), "SnoozeDie", newSpecial: EventSpecialCondition.Death));
             events.Add (new Event ("Evig søvn, snehvide style - RIP!", new List<string> (), new List<string> (), "SnowWhite", newSpecial: EventSpecialCondition.Death));
 
-            events.Add(new Event("Du bliver næsten kørt ned af en bil, tror du er sikker og så bliver du kørt ned af en cykel og dør", new List<string>(), new List<string>(), "RunOver"));
-            events.Add(new Event("Du bliver blændet af solskinnet igennem vinduet, taber din kaffe ind i buschaufføren og han kører ned i en å og du dør", new List<string>(), new List<string>(), "PublicTranspDie"));
+            events.Add(new Event("Du bliver næsten kørt ned af en bil, tror du er sikker, og så bliver du kørt ned af en cykel og dør", new List<string>(), new List<string>(), "RunOver"));
+            events.Add(new Event("Du bliver blændet af solskin igennem vinduet og taber din kaffe på buschaufføren, så han kører ned i en å og du dør", new List<string>(), new List<string>(), "PublicTranspDie"));
 
-            events.Add(new Event("J-bro dræber dig  for at lave en objekt-model forkert", new List<string>(), new List<string>(), "SysDie", newSpecial: EventSpecialCondition.Death));
-            events.Add(new Event("Du kommer til at programmere en AI der dræber hele menneskeligheden", new List<string>(), new List<string>(), "ProDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("J-bro dræber dig for at lave en objektmodel forkert", new List<string>(), new List<string>(), "SysDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("Du kommer til at programmere en AI der dræber hele menneskeheden ups", new List<string>(), new List<string>(), "ProDie", newSpecial: EventSpecialCondition.Death));
 
-            events.Add(new Event("du dør Leif er sur, hvorfor fanden er du i Leifs gyde?! Han kaster en pokeball aka en håndgranat og du eksploderer", new List<string>(), new List<string>(), "BridgeDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("Du dør. Leif er sur, hvorfor fanden er du i Leifs gyde?! Han kaster en pokeball aka en håndgranat og du eksploderer", new List<string>(), new List<string>(), "BridgeDie", newSpecial: EventSpecialCondition.Death));
 
-            events.Add(new Event("A-bar findes ikke længere Orhan er skuffet og henter en gruppe mænd til at tæske dig, du dør efterfølgende.", new List<string>(), new List<string>(), "AbarDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("A-bar findes ikke længere. Orhan er skuffet og henter en gruppe mænd til at tæske dig, og du dør efterfølgende.", new List<string>(), new List<string>(), "AbarDie", newSpecial: EventSpecialCondition.Death));
             events.Add(new Event("Der er så dødt og kedeligt at du dræber dig selv.", new List<string>(), new List<string>(), "OldIrishDie", newSpecial: EventSpecialCondition.Death));
-            events.Add(new Event("Du bliver trampet ihjel, fordi der er for mange mennesker på floor.", new List<string>(), new List<string>(), "ProudDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("Du bliver trampet ihjel fordi der er for mange mennesker på floor.", new List<string>(), new List<string>(), "ProudDie", newSpecial: EventSpecialCondition.Death));
 
-            events.Add (new Event ("Du valgte at tage en dame med hjem kl 05 er du dum? Hun stjæler dine organer og efterlader dig i badekaret til at dø.", new List<string>(), new List<string>(), "Ladykiller", newSpecial: EventSpecialCondition.Death));
+            events.Add (new Event ("Du valgte at tage en dame med hjem kl. 05, er du dum? Hun stjæler dine organer og efterlader dig i badekaret til at dø.", new List<string>(), new List<string>(), "Ladykiller", newSpecial: EventSpecialCondition.Death));
 
             // Set the very first event
             curEvent = events[0];
 
             // Create the winning-event
-            Event winEvent = new Event ("Du bliver vækket af solen, der skinner ind i dine øjne." +
-                "\nDu kigger over på din kalender, der står ikke fredag for første gang i mange dage…." +
+            Event winEvent = new Event ("Du bliver vækket af solen der skinner ind i dine øjne." +
+                "\nDu kigger over på din kalender, og der står ikke fredag for første gang i mange dage…." +
                 "\n\nDET ENDELIG BLEVET WEEKEND!", new List<string> (), new List<string> (), "CHICKEN", foreground: "Green");
             winEvent.evSpCon = Event.EventSpecialCondition.Win;
             events.Add (winEvent);
@@ -128,9 +128,16 @@ namespace GameJamExample
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
             // Game Intro Text
-            Console.WriteLine("Du vågner op fredag morgen, solen skinner ind af vinduet." +
-                "\nDet en dag som enhver anden, men der er noget, der føles bekendt. " +
-                "\nHmmm. Der er ingen grund til bekymring, der er en travl dag foran dig" +
+            Console.WriteLine("\r\n   ___             _                __                         _       _   " +
+                              "\r\n  / __\\ __ ___  __| | __ _  __ _   / _| ___  _ __    _____   _(_) __ _| |_ " +
+                              "\r\n / _\\| '__/ _ \\/ _` |/ _` |/ _` | | |_ / _ \\| '__|  / _ \\ \\ / / |/ _` | __|" +
+                              "\r\n/ /  | | |  __/ (_| | (_| | (_| | |  _| (_) | |    |  __/\\ V /| | (_| | |_ " +
+                              "\r\n\\/   |_|  \\___|\\__,_|\\__,_|\\__, | |_|  \\___/|_|     \\___| \\_/ |_|\\__, |\\__|" +
+                              "\r\n                           |___/                                 |___/     " +
+                              "\r\n");
+            Console.WriteLine("\nDu vågner op fredag morgen kl. 06:45, og solen skinner ind af vinduet." +
+                "\nDet en dag som enhver anden, men der er noget der føles bekendt. " +
+                "\nHmmm. Der er ingen grund til bekymring. Der er en travl dag foran dig" +
                 "\nog du skal endda ud og klatre og drikke i byen med Orhan!\n");
 
             // TODO Could extend here with ...
@@ -159,13 +166,13 @@ namespace GameJamExample
                     {
                         if (brekfus == 0)
                         {
-                            Console.WriteLine("Du har energi fra monneren du drak til morgenmad. Du flyver op af ruter i alle sværhedsgrader, Orhan indser at han aldrig bliver lige så god til bouldering som dig.");
+                            Console.WriteLine("Du har energi fra monneren du drak til morgenmad. Du flyver op af ruter i alle sværhedsgrader, og Orhan indser at han aldrig bliver lige så god til bouldering som dig.");
                         } else if (brekfus == 1)
                         {
-                            Console.WriteLine("Du prøver at klatre op af den nemmeste rute, men vand er for svage mennesker og giver ingen energi. Du falder ned fra væggen og lander lige akkurat udenfor madrassen under dig og du dør.");
+                            Console.WriteLine("Du prøver at klatre op af den nemmeste rute, men vand er for svagelige mennesker og giver ingen energi. Du falder ned fra væggen og lander lige akkurat udenfor madrassen under dig og dør.");
                         } else if (brekfus == 2)
                         {
-                            Console.WriteLine("Dagen går relativt okay og du klatre som du normalt ville.\r\nSiden du spiste müsli til morgenmad føler du dig fyldt af energi, du går efter en sværere rute end normalt. Halvvejs oppe løber müsliens energi tør. Du falder og forstrækker en muskel, dette er lig med død for en svag IT studerende.");
+                            Console.WriteLine("Dagen går relativt okay og du klatrer som du normalt ville.\r\nSiden du spiste müsli til morgenmad føler du dig fyldt af energi, og du går efter en sværere rute end normalt. Halvvejs oppe løber müsliens energi tør. Du falder og forstrækker en muskel, som er lig med død for en svag IT studerende.");
                         }
                         curEvent = events.FirstOrDefault(x => x.eventId == "CityTrip");
                     }

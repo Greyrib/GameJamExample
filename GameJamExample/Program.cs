@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using static GameJamExample.Event;
+using NAudio.Wave;
 
 namespace GameJamExample
 {
@@ -13,9 +14,18 @@ namespace GameJamExample
 
         static int brekfus = -1;
 
+        static Thread musicThread;
+
         static void Main (string[] args)
         {
+            // Create a new thread that runs the Play_Music method
+            musicThread = new Thread(new ThreadStart(Play_Music));
+
+            // Start the thread
+            musicThread.Start();
+            //Play_Music();
             
+
             Game_Intro();
             
             // Set regular events
@@ -163,6 +173,7 @@ namespace GameJamExample
                         string specialDebugMessage = curEvent.evSpCon == EventSpecialCondition.Death ? " - LOSE CONDITION - " : " - WIN CONDITION - "; // Ternary conditional operator
                         //Console.WriteLine (specialDebugMessage);
                         dontloop = true;
+                        //musicThread.
                         Console.WriteLine ("\nPress en Buttongs for at Exitificére Applikasjionaellen");
                         //Console.ReadLine (); // Not needed; console requires input at the end of everything
                     }
@@ -220,6 +231,28 @@ namespace GameJamExample
                     Console.WriteLine ("\n");
                 }
             }
+        }
+
+        static void Play_Music()
+        {
+            // Load the WAV file
+            WaveFileReader waveFileReader = new WaveFileReader(@"C:\Archive S\UCL\3. Semester\Git\GameJam med Förste Semester\GameJamExample\GameJamExample\piano loop.wav");
+            // Create a WaveOutEvent instance
+            WaveOutEvent waveOutEvent = new WaveOutEvent();
+
+            // Play the WAV file
+            waveOutEvent.Init(waveFileReader);
+            waveOutEvent.Play();
+
+            // Wait for the playback to finish
+            while (waveOutEvent.PlaybackState == PlaybackState.Playing)
+            {
+                // Do nothing
+            }
+
+            // Clean up
+            waveOutEvent.Stop();
+            waveOutEvent.Dispose();
         }
 
     }

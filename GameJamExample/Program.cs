@@ -2,6 +2,8 @@
 using static GameJamExample.Event;
 using NAudio.Wave;
 
+
+
 namespace GameJamExample
 {
     internal class Program
@@ -14,7 +16,8 @@ namespace GameJamExample
 
         static int brekfus = -1;
 
-        static Thread musicThread; // Thread so music can run simultaneously with gameplay loop
+        static Thread? musicThread; // Thread so music can run simultaneously with gameplay loop
+        static bool stopMusic = false; // For stopping music
 
         static void Main (string[] args)
         {
@@ -34,7 +37,7 @@ namespace GameJamExample
                 // Reference Event Constructor Params : eventOriginText, optionTextStringList, optionNextEventIdStringList, eventIdString
 
                 new Event ("Vågner i sin seng  klokken er 06:45", 
-                    new List<string>{"1. Snooze i 5 min.", "2. Sov igennem alarmen", "Staa op med det samme"},
+                    new List<string>{"Snooze i 5 min.", "Sov igennem alarmen", "Staa op med det samme"},
                     new List<string>(){"SnoozeDie", "SnowWhite", "Shower" },
                     "WakeUp")
                 ,
@@ -43,7 +46,7 @@ namespace GameJamExample
                     "Gå i bad og brug håndsæbe til hele kroppen.",
                     "Spring badet over."},
                 new List<string>{ "ShampooDie", "Brekfus" /*"SoapDie"*/, "NoShower" },
-                "Shower")
+                "Shower", newPretext: "Du lever, du er frisk og klar til dagen")
                 ,
                 // NOTE Special case here, this event's choice affects future outcome in BoulderingHall
                 new Event ("Morgenmad. Nom nom.",
@@ -172,6 +175,7 @@ namespace GameJamExample
                     if (curEvent.evSpCon != Event.EventSpecialCondition.None) {
                         string specialDebugMessage = curEvent.evSpCon == EventSpecialCondition.Death ? " - LOSE CONDITION - " : " - WIN CONDITION - "; // Ternary conditional operator
                         //Console.WriteLine (specialDebugMessage);
+                        stopMusic = true;
                         dontloop = true;
                         //musicThread.
                         Console.WriteLine ("\nPress en Buttongs for at Exitificére Applikasjionaellen");
@@ -182,6 +186,7 @@ namespace GameJamExample
 
                     // Special dev exit check, with v8 nullable-check
                     if (playerInput?.ToLower() ==  "qq") {
+                        stopMusic = true;
                         Console.Clear ();
                         dontloop = true; // Set exit-condition so while-loop ceases occurring
                         break; // Break out of the while-loop we're in
@@ -212,7 +217,7 @@ namespace GameJamExample
                     // Set brekfus-variable (based off player's parsed choice), if it's the special brekfus event
                     if (curEvent.eventId == "Brekfus")
                         brekfus = parsedPlayerChoice;
-                    Console.WriteLine($"\n[DEBUG] Brekfus is now: {brekfus}\n");
+                    //Console.WriteLine($"\n[DEBUG] Brekfus is now: {brekfus}\n");
 
 
 
@@ -236,7 +241,8 @@ namespace GameJamExample
         static void Play_Music()
         {
             // Load the WAV file
-            WaveFileReader waveFileReader = new WaveFileReader(@"C:\Archive S\UCL\3. Semester\Git\GameJam med Förste Semester\GameJamExample\GameJamExample\piano loop.wav");
+            WaveFileReader waveFileReader = new WaveFileReader("piano loop.wav");
+
             // Create a WaveOutEvent instance
             WaveOutEvent waveOutEvent = new WaveOutEvent();
 
@@ -244,15 +250,21 @@ namespace GameJamExample
             waveOutEvent.Init(waveFileReader);
             waveOutEvent.Play();
 
-            // Wait for the playback to finish
-            while (waveOutEvent.PlaybackState == PlaybackState.Playing)
+            // Continuously check if playback is finished or stop is requested
+            while (waveOutEvent.PlaybackState == PlaybackState.Playing && !stopMusic)
             {
-                // Do nothing
+                Thread.Sleep(100); // Sleep briefly to prevent busy-waiting
+            }
+
+            // Stop the playback if requested
+            if (waveOutEvent.PlaybackState == PlaybackState.Playing)
+            {
+                waveOutEvent.Stop();
             }
 
             // Clean up
-            waveOutEvent.Stop();
             waveOutEvent.Dispose();
+            waveFileReader.Dispose();
         }
 
     }

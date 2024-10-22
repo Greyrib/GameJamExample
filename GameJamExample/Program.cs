@@ -87,31 +87,31 @@ namespace GameJamExample
             // NOTE Disregard that VS states they aren't used; they're sought & triggered when an event points to a followup-event
             events.Add (new Event ("Du glider i shampoo-flasken, slaar hovedet og blöder ud!", new List<string> (), new List<string> (), "ShampooDie", newSpecial: EventSpecialCondition.Death));
             //events.Add (new Event ("Du lever en bar af håndsæbe er den bedste sæbe til krop og sjæl", new List<string> (), new List<string> (), "SoapDie"));
-            events.Add (new Event ("Din nabo snakker højt om at du lugter hele vejen ind i hans lejlighed, du dør af skam.", new List<string> (), new List<string> (), "NoShower", newSpecial: EventSpecialCondition.Death));
+            events.Add (new Event ("Din nabo snakker højt om at du lugter hele vejen ind i hans lejlighed. Du dør af skam.", new List<string> (), new List<string> (), "NoShower", newSpecial: EventSpecialCondition.Death));
 
-            events.Add (new Event ("Du faar en blodprop og er dieded!", new List<string> (), new List<string> (), "SnoozeDie", newSpecial: EventSpecialCondition.Death));
+            events.Add (new Event ("Du får en blodprop og er dieded!", new List<string> (), new List<string> (), "SnoozeDie", newSpecial: EventSpecialCondition.Death));
             events.Add (new Event ("Evig søvn, snehvide style - RIP!", new List<string> (), new List<string> (), "SnowWhite", newSpecial: EventSpecialCondition.Death));
 
-            events.Add(new Event("Du bliver næsten kørt ned af en bil, tror du er sikker og så bliver du kørt ned af en cykel og dør", new List<string>(), new List<string>(), "RunOver"));
-            events.Add(new Event("Du bliver blændet af solskinnet igennem vinduet, taber din kaffe ind i buschaufføren og han kører ned i en å og du dør", new List<string>(), new List<string>(), "PublicTranspDie"));
+            events.Add(new Event("Du bliver næsten kørt ned af en bil, tror du er sikker, og så bliver du kørt ned af en cykel og dør", new List<string>(), new List<string>(), "RunOver"));
+            events.Add(new Event("Du bliver blændet af solskin igennem vinduet og taber din kaffe på buschaufføren, så han kører ned i en å og du dør", new List<string>(), new List<string>(), "PublicTranspDie"));
 
-            events.Add(new Event("J-bro dræber dig  for at lave en objekt-model forkert", new List<string>(), new List<string>(), "SysDie", newSpecial: EventSpecialCondition.Death));
-            events.Add(new Event("Du kommer til at programmere en AI der dræber hele menneskeligheden", new List<string>(), new List<string>(), "ProDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("J-bro dræber dig for at lave en objektmodel forkert", new List<string>(), new List<string>(), "SysDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("Du kommer til at programmere en AI der dræber hele menneskeheden ups", new List<string>(), new List<string>(), "ProDie", newSpecial: EventSpecialCondition.Death));
 
-            events.Add(new Event("du dør Leif er sur, hvorfor fanden er du i Leifs gyde?! Han kaster en pokeball aka en håndgranat og du eksploderer", new List<string>(), new List<string>(), "BridgeDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("Du dør. Leif er sur, hvorfor fanden er du i Leifs gyde?! Han kaster en pokeball aka en håndgranat og du eksploderer", new List<string>(), new List<string>(), "BridgeDie", newSpecial: EventSpecialCondition.Death));
 
-            events.Add(new Event("A-bar findes ikke længere Orhan er skuffet og henter en gruppe mænd til at tæske dig, du dør efterfølgende.", new List<string>(), new List<string>(), "AbarDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("A-bar findes ikke længere. Orhan er skuffet og henter en gruppe mænd til at tæske dig, og du dør efterfølgende.", new List<string>(), new List<string>(), "AbarDie", newSpecial: EventSpecialCondition.Death));
             events.Add(new Event("Der er så dødt og kedeligt at du dræber dig selv.", new List<string>(), new List<string>(), "OldIrishDie", newSpecial: EventSpecialCondition.Death));
-            events.Add(new Event("Du bliver trampet ihjel, fordi der er for mange mennesker på floor.", new List<string>(), new List<string>(), "ProudDie", newSpecial: EventSpecialCondition.Death));
+            events.Add(new Event("Du bliver trampet ihjel fordi der er for mange mennesker på floor.", new List<string>(), new List<string>(), "ProudDie", newSpecial: EventSpecialCondition.Death));
 
-            events.Add (new Event ("Du valgte at tage en dame med hjem kl 05 er du dum? Hun stjæler dine organer og efterlader dig i badekaret til at dø.", new List<string>(), new List<string>(), "Ladykiller", newSpecial: EventSpecialCondition.Death));
+            events.Add (new Event ("Du valgte at tage en dame med hjem kl. 05, er du dum? Hun stjæler dine organer og efterlader dig i badekaret til at dø.", new List<string>(), new List<string>(), "Ladykiller", newSpecial: EventSpecialCondition.Death));
 
             // Set the very first event
             curEvent = events[0];
 
             // Create the winning-event
-            Event winEvent = new Event ("Du bliver vækket af solen, der skinner ind i dine øjne." +
-                "\nDu kigger over på din kalender, der står ikke fredag for første gang i mange dage…." +
+            Event winEvent = new Event ("Du bliver vækket af solen der skinner ind i dine øjne." +
+                "\nDu kigger over på din kalender, og der står ikke fredag for første gang i mange dage…." +
                 "\n\nDET ENDELIG BLEVET WEEKEND!", new List<string> (), new List<string> (), "CHICKEN", foreground: "Green");
             winEvent.evSpCon = Event.EventSpecialCondition.Win;
             events.Add (winEvent);

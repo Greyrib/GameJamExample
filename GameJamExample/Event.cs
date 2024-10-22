@@ -16,8 +16,18 @@ namespace GameJamExample
         public enum EventSpecialCondition { None, Death, Win }; // Required for the property below
         public EventSpecialCondition evSpCon; // Used to determine whether we've won or lost, when events with no options & this property set (to other than 'None') occurs
 
+        public string TextColoring;
+
+        public void PreEventStuff ()
+        {
+            if (TextColoring == "White")
+                Console.ForegroundColor = ConsoleColor.White;
+            else if (TextColoring == "Green")
+                Console.ForegroundColor = ConsoleColor.Green;
+        }
+
         // NOTE Last parameters with 'paramName = value' are optional parameters ; they must be last in param-list
-        public Event (string newOrigin, List<string> newOptions, List<string> newNextEvents, string newId = "-1", EventSpecialCondition newSpecial = EventSpecialCondition.None)
+        public Event (string newOrigin, List<string> newOptions, List<string> newNextEvents, string newId = "-1", EventSpecialCondition newSpecial = EventSpecialCondition.None, string foreground = "White")
         {
             //if (newNextEvents.Count != newOptions.Count)
             //    Console.Write("ERROR Array lengths don't match");
@@ -29,6 +39,8 @@ namespace GameJamExample
             optionsNextEvents = newNextEvents;
 
             evSpCon = newSpecial;
+
+            TextColoring = foreground;
         }
     }
 }

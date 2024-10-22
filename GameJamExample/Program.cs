@@ -13,21 +13,8 @@ namespace GameJamExample
 
         static void Main (string[] args)
         {
-            // Game Intro Text
-            Console.WriteLine("Du vågner op fredag morgen, solen skinner ind af vinduet." +
-                "\nDet en dag som enhver anden, men der er noget, der føles bekendt. " +
-                "\nHmmm. Der er ingen grund til bekymring, der er en travl dag foran dig" +
-                "\nog du skal endda ud og klatre og drikke i byen med Orhan!\n");
-
-            // TODO Could extend here with ...
-            // Menu Options (Play Game, Settings, Exit)
-            // Instructions
-            // Clear screen & Console.Readline() await
-            // ... Possibly by doing all this in a Startup() with submethods for structure & readability
-
-            // Set special events
-            new Event ("You died", new List<string> { "X to Quit!" }, new List<string> (), "YouDied");
-
+            Game_Intro();
+            
             // Set regular events
             events = new List<Event> ()
             {
@@ -60,7 +47,7 @@ namespace GameJamExample
             // Create the winning-event
             Event winEvent = new Event ("Du bliver vækket af solen, der skinner ind i dine øjne." +
                 "\nDu kigger over på din kalender, der står ikke fredag for første gang i mange dage…." +
-                "\nDET ENDELIG BLEVET WEEKEND!", new List<string> (), new List<string> (), "CHICKEN");
+                "\n\nDET ENDELIG BLEVET WEEKEND!", new List<string> (), new List<string> (), "CHICKEN", foreground: "Green");
             winEvent.evSpCon = Event.EventSpecialCondition.Win;
             events.Add (winEvent);
 
@@ -68,6 +55,24 @@ namespace GameJamExample
             Loop ();
         }
 
+        static void Game_Intro ()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+            // Game Intro Text
+            Console.WriteLine("Du vågner op fredag morgen, solen skinner ind af vinduet." +
+                "\nDet en dag som enhver anden, men der er noget, der føles bekendt. " +
+                "\nHmmm. Der er ingen grund til bekymring, der er en travl dag foran dig" +
+                "\nog du skal endda ud og klatre og drikke i byen med Orhan!\n");
+
+            // TODO Could extend here with ...
+            // Menu Options (Play Game, Settings, Exit)
+            // Instructions
+            // Clear screen & Console.Readline() await
+            // ... Possibly by doing all this in a Startup() with submethods for structure & readability
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
         static void Loop ()
         {
             while (dontloop == false) {
@@ -75,6 +80,7 @@ namespace GameJamExample
                 //Console.WriteLine ($"[DEBUG] Current event is presently \"{curEvent.originText}\" with {curEvent.options.Count} options & {curEvent.optionsNextEvents.Count} nextEvents | {curEvent.evSpCon}");
 
                 if (curEvent != null) {
+                    curEvent.PreEventStuff();
                     Console.WriteLine (curEvent.originText);
                     foreach (string option in curEvent.options)
                         Console.WriteLine (option);
@@ -94,6 +100,14 @@ namespace GameJamExample
                         Console.Clear ();
                         dontloop = true; // Set exit-condition so while-loop ceases occurring
                         break; // Break out of the while-loop we're in
+                    }
+                    // Restart the game
+                    else if (playerInput?.ToUpper() == "R")
+                    {
+                        Console.Clear();
+                        Game_Intro();
+                        curEvent = events[0];
+                        continue;
                     }
                         
 
